@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>应用一</title>
+</head>
+<body>
+    <h1>应用一</h1>
+    <button id="cookie">Cookie</button>
+    <button id="ajax">Ajax</button>
+    <h1 id="show"></h1>
+
+    <script src="../static/jquery-3.3.1.min.js"></script>
+    <script src="../static/common.js"></script>
+    <script>
+        document.cookie="one=one.jwt.cc;Domain=.jwt.cc";
+        $("#cookie").click(()=>{
+            $("#show").text(getCookie('one'))
+        })
+        $("#ajax").click(()=>{
+            $.ajax({
+                type: "POST",
+                url: "http://one.jwt.cc:8880/data",
+                data: {name: 'one'},
+                success: function(data){
+                    console.log(data)
+                }
+            });
+        })
+    </script>
+</body>
+</html>
