@@ -12,9 +12,10 @@ app.use(express.static(__dirname+'/'));
 app.get('/', function (req, res) {
     res.sendFile(__dirname+'/html/server0.html')
 })
-app.post('/data', jsonParser, function (req, res) {
+app.post('/data', urlencodedParser, function (req, res) {
+    console.log(req.body.name)
 	console.log("请求头：",req.headers.token)
-    res.send(req.body)    
+    res.send(req.body)   
 })
 
 let server = app.listen(8880, function () {
